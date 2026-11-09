@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#070b17" />
+    <meta name="description" content="Cellbound Arena — crece, esquiva y domina la arena." />
+    <title>Cellbound Arena</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <canvas id="game-canvas" aria-label="Arena de Cellbound"></canvas>
+
+      <section class="topbar" aria-label="Estado de conexión">
+        <a class="brand" href="#" aria-label="Cellbound Arena">
+          <span class="brand-orb"><span></span></span>
+          <span class="brand-name">CELLBOUND</span>
+        </a>
+        <div class="session-pill">
+          <span class="live-dot"></span>
+          <span>ARENA LOCAL</span>
+          <span class="session-divider"></span>
+          <span class="session-status">ONLINE</span>
+        </div>
+      </section>
+
+      <section class="hud" id="hud" aria-live="polite">
+        <div class="stat-card mass-card">
+          <span class="stat-kicker">TU MASA</span>
+          <strong id="mass-value">120</strong>
+          <span class="stat-unit">pts</span>
+        </div>
+        <div class="stat-card rank-card">
+          <span class="stat-kicker">POSICIÓN</span>
+          <strong id="rank-value">#1</strong>
+          <span class="stat-unit">arena</span>
+        </div>
+        <div class="timer-card">
+          <span class="stat-kicker">TIEMPO VIVO</span>
+          <strong id="timer-value">00:00</strong>
+        </div>
+      </section>
+
+      <aside class="leaderboard panel" id="leaderboard" aria-label="Tabla de posiciones">
+        <div class="panel-heading">
+          <div>
+            <span class="stat-kicker">ARENA / 01</span>
+            <h2>Top hunters</h2>
+          </div>
+          <span class="panel-live">LIVE</span>
+        </div>
+        <ol id="leaderboard-list"></ol>
+      </aside>
+
+      <aside class="controls-hint panel" id="controls-hint">
+        <div class="control-line"><span class="keycap">MOUSE</span><span>Dirige tu célula</span></div>
+        <div class="control-line"><span class="keycap">Q</span><span>Expulsa masa</span></div>
+        <div class="control-line"><span class="keycap">ESC</span><span>Pausa la partida</span></div>
+      </aside>
+
+      <section class="start-screen overlay" id="start-screen">
+        <div class="start-card">
+          <div class="eyebrow"><span class="eyebrow-line"></span>SEASON 01 / SOLO RUN</div>
+          <div class="hero-mark" aria-hidden="true">
+            <span class="hero-core"></span>
+            <span class="hero-ring ring-a"></span>
+            <span class="hero-ring ring-b"></span>
+            <span class="hero-particle particle-a"></span>
+            <span class="hero-particle particle-b"></span>
+          </div>
+          <h1>Crece.<br /><em>Domina.</em></h1>
+          <p class="hero-copy">Una arena viva. Un solo instinto.<br />Cada orb cuenta.</p>
+          <label class="name-field">
+            <span>Tu nombre de hunter</span>
+            <input id="name-input" maxlength="14" value="Nova" autocomplete="off" spellcheck="false" />
+          </label>
+          <button class="primary-button" id="start-button" type="button">
+            <span>Entrar a la arena</span>
+            <span class="button-arrow">↗</span>
+          </button>
+          <div class="start-meta"><span>25 hunters</span><span class="meta-dot"></span><span>Mapa 5.2k × 3.4k</span><span class="meta-dot"></span><span>Sesión rápida</span></div>
+        </div>
+        <div class="start-footer"><span>CB / 001</span><span>Diseñado para jugar a pantalla completa</span><span>v0.1</span></div>
+      </section>
+
+      <section class="pause-toast" id="pause-toast" hidden>
+        <span class="pause-icon">Ⅱ</span>
+        <strong>Partida en pausa</strong>
+        <span>Presiona ESC para continuar</span>
+      </section>
+
+      <section class="gameover overlay" id="gameover" hidden>
+        <div class="gameover-card">
+          <div class="eyebrow"><span class="eyebrow-line"></span>RUN COMPLETE</div>
+          <h2>La arena<br /><em>recuerda.</em></h2>
+          <p id="gameover-copy">Tu célula fue absorbida.</p>
+          <div class="run-result">
+            <div><span>MASA FINAL</span><strong id="final-mass">120</strong></div>
+            <div><span>MEJOR RANK</span><strong id="final-rank">#1</strong></div>
+            <div><span>TIEMPO</span><strong id="final-time">00:00</strong></div>
+          </div>
+          <button class="primary-button" id="restart-button" type="button"><span>Volver a intentar</span><span class="button-arrow">↗</span></button>
+        </div>
+      </section>
+
+      <div class="toast" id="event-toast" role="status" aria-live="polite"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
